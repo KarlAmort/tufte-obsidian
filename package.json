@@ -4,7 +4,7 @@
     "scripts": {
         "version": "node version-bump.mjs && git add manifest.json versions.json",
         "build": "sass src/tufte.scss:theme.css",
-        "snippet": "sass src/tufte.scss:dist/tufte.snippet.css",
+        "dev:snippet": "sass src/tufte.scss:dist/tufte.snippet.css --watch",
         "dev": "sass src/tufte.scss:theme.css --watch"
     },
     "dependencies": {

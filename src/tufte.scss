@@ -31,8 +31,7 @@
 }
 
 .cm-editor {
-   font-size: 15px;
-
+   // font-size: 15px;
    body {
       /* width: 87.5%;
     margin-left: auto;
@@ -246,8 +245,6 @@
    .callout[data-callout="marginnote"], 
    .callout[data-callout="sidenote"]
    {
-      // float: right;
-      // clear: right;
       margin-right: -60%;
       width: 50%;
       margin-top: 0.3rem;
@@ -435,9 +432,7 @@
       .callout[data-callout="marginnote"],  
       .callout[data-callout="sidenote"]
      {
-         // display: none;
-
-         .margin-toggle:checked+ {
+         .margin-toggle:checked {
             display: block;
             float: left;
             left: 1rem;
