@@ -233,11 +233,21 @@
    img {
       max-width: 100%;
    }
-
-   .sidenote,
-   .marginnote {
-      float: right;
-      clear: right;
+   /* Media query for narrower screens */
+   @media (max-width: 760px) {
+      div[data-callout="marginnote"] {
+         float: none;
+         margin-right: 0;
+         width: 95%;
+         margin: 1rem 2.5%;
+      }
+   }
+   
+   .callout[data-callout="marginnote"], 
+   .callout[data-callout="sidenote"]
+   {
+      // float: right;
+      // clear: right;
       margin-right: -60%;
       width: 50%;
       margin-top: 0.3rem;
@@ -253,7 +263,7 @@
    }
 
    .sidenote-number:after,
-   .sidenote:before {
+    .callout[data-callout="sidenote"]:before {
       font-family: "et-book-roman-old-style";
       position: relative;
       vertical-align: baseline;
@@ -266,18 +276,22 @@
       left: 0.1rem;
    }
 
-   .sidenote:before {
+    .callout[data-callout="sidenote"]:before {
       content: counter(sidenote-counter) " ";
       font-size: 1rem;
       top: -0.5rem;
    }
 
-   blockquote .sidenote,
-   blockquote .marginnote {
+   blockquote { 
+      .callout[data-callout="marginnote"],
+      .callout[data-callout="sidenote"] {
       margin-right: -82%;
       min-width: 59%;
       text-align: left;
+      }
    }
+
+
 
    div.fullwidth,
    table.fullwidth {
@@ -313,8 +327,8 @@
       font-size: 0.80em;
    }
 
-   .marginnote>code,
-   .sidenote>code {
+   .callout[data-callout="marginnote"]>code,
+   .callout[data-callout="sidenote"]>code {
       font-size: 1rem;
    }
 
@@ -418,22 +432,24 @@
          display: inline;
       }
 
-      .sidenote,
-      .marginnote {
-         display: none;
-      }
+      .callout[data-callout="marginnote"],  
+      .callout[data-callout="sidenote"]
+     {
+         // display: none;
 
-      .margin-toggle:checked+.sidenote,
-      .margin-toggle:checked+.marginnote {
-         display: block;
-         float: left;
-         left: 1rem;
-         clear: both;
-         width: 95%;
-         margin: 1rem 2.5%;
-         // vertical-align: baseline;
-         position: relative;
-      }
+         .margin-toggle:checked+ {
+            display: block;
+            float: left;
+            left: 1rem;
+            clear: both;
+            width: 95%;
+            margin: 1rem 2.5%;
+            // vertical-align: baseline;
+            position: relative;
+         }
+
+     }
+
 
       label {
          cursor: pointer;

@@ -26,10 +26,12 @@
 .cm-editor {
   font-size: 15px;
   /* Adds dark mode */
+  /* color: red; */
   /* Chapter Epigraphs */
   /* end chapter epigraphs styles */
   /* 50 + 5 == 55, to be the same width as paragraph */
   /* Sidenotes, margin notes, figures, captions */
+  /* Media query for narrower screens */
 }
 .cm-editor body {
   /* width: 87.5%;
@@ -80,9 +82,6 @@
   margin: 1em 0;
   padding: 0;
 }
-.cm-editor div {
-  /* color: red; */
-}
 .cm-editor p.subtitle {
   font-style: italic;
   margin-top: 1rem;
@@ -104,7 +103,10 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.cm-editor p, .cm-editor dl, .cm-editor ol, .cm-editor ul {
+.cm-editor p,
+.cm-editor dl,
+.cm-editor ol,
+.cm-editor ul {
   font-size: 1.4rem;
   line-height: 2rem;
 }
@@ -121,7 +123,8 @@
   margin-top: 3em;
   margin-bottom: 3em;
 }
-.cm-editor div.epigraph > blockquote, .cm-editor div.epigraph > blockquote > p {
+.cm-editor div.epigraph > blockquote,
+.cm-editor div.epigraph > blockquote > p {
   font-style: italic;
 }
 .cm-editor div.epigraph > blockquote > footer {
@@ -142,14 +145,19 @@
   font-size: 1.1rem;
   text-align: right;
 }
-.cm-editor section > p, .cm-editor section > footer, .cm-editor section > table {
+.cm-editor section > p,
+.cm-editor section > footer,
+.cm-editor section > table {
   width: 55%;
 }
-.cm-editor section > dl, .cm-editor section > ol, .cm-editor section > ul {
+.cm-editor section > dl,
+.cm-editor section > ol,
+.cm-editor section > ul {
   width: 50%;
   -webkit-padding-start: 5%;
 }
-.cm-editor dt:not(:first-child), .cm-editor li:not(:first-child) {
+.cm-editor dt:not(:first-child),
+.cm-editor li:not(:first-child) {
   margin-top: 0.25rem;
 }
 .cm-editor figure {
@@ -177,7 +185,8 @@
 .cm-editor figure.fullwidth figcaption {
   margin-right: 24%;
 }
-.cm-editor a:link, .cm-editor a:visited {
+.cm-editor a:link,
+.cm-editor a:visited {
   color: inherit;
   text-underline-offset: 0.1em;
   text-decoration-thickness: 0.05em;
@@ -185,9 +194,16 @@
 .cm-editor img {
   max-width: 100%;
 }
-.cm-editor .sidenote, .cm-editor .marginnote {
-  float: right;
-  clear: right;
+@media (max-width: 760px) {
+  .cm-editor div[data-callout=marginnote] {
+    float: none;
+    margin-right: 0;
+    width: 95%;
+    margin: 1rem 2.5%;
+  }
+}
+.cm-editor .callout[data-callout=marginnote],
+.cm-editor .callout[data-callout=sidenote] {
   margin-right: -60%;
   width: 50%;
   margin-top: 0.3rem;
@@ -200,7 +216,8 @@
 .cm-editor .sidenote-number {
   counter-increment: sidenote-counter;
 }
-.cm-editor .sidenote-number:after, .cm-editor .sidenote:before {
+.cm-editor .sidenote-number:after,
+.cm-editor .callout[data-callout=sidenote]:before {
   font-family: "et-book-roman-old-style";
   position: relative;
   vertical-align: baseline;
@@ -211,17 +228,19 @@
   top: -0.5rem;
   left: 0.1rem;
 }
-.cm-editor .sidenote:before {
+.cm-editor .callout[data-callout=sidenote]:before {
   content: counter(sidenote-counter) " ";
   font-size: 1rem;
   top: -0.5rem;
 }
-.cm-editor blockquote .sidenote, .cm-editor blockquote .marginnote {
+.cm-editor blockquote .callout[data-callout=marginnote],
+.cm-editor blockquote .callout[data-callout=sidenote] {
   margin-right: -82%;
   min-width: 59%;
   text-align: left;
 }
-.cm-editor div.fullwidth, .cm-editor table.fullwidth {
+.cm-editor div.fullwidth,
+.cm-editor table.fullwidth {
   width: 100%;
 }
 .cm-editor div.table-wrapper {
@@ -232,7 +251,8 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   letter-spacing: 0.03em;
 }
-.cm-editor code, .cm-editor pre > code {
+.cm-editor code,
+.cm-editor pre > code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 1rem;
   line-height: 1.42;
@@ -242,10 +262,13 @@
 .cm-editor .sans > code {
   font-size: 1.2rem;
 }
-.cm-editor h1 > code, .cm-editor h2 > code, .cm-editor h3 > code {
+.cm-editor h1 > code,
+.cm-editor h2 > code,
+.cm-editor h3 > code {
   font-size: 0.8em;
 }
-.cm-editor .marginnote > code, .cm-editor .sidenote > code {
+.cm-editor .callout[data-callout=marginnote] > code,
+.cm-editor .callout[data-callout=sidenote] > code {
   font-size: 1rem;
 }
 .cm-editor pre > code {
@@ -297,19 +320,25 @@
     padding-left: 8%;
     padding-right: 8%;
   }
-  .cm-editor hr, .cm-editor section > p, .cm-editor section > footer, .cm-editor section > table {
+  .cm-editor hr,
+  .cm-editor section > p,
+  .cm-editor section > footer,
+  .cm-editor section > table {
     width: 100%;
   }
   .cm-editor pre > code {
     width: 97%;
   }
-  .cm-editor section > dl, .cm-editor section > ol, .cm-editor section > ul {
+  .cm-editor section > dl,
+  .cm-editor section > ol,
+  .cm-editor section > ul {
     width: 90%;
   }
   .cm-editor figure {
     max-width: 90%;
   }
-  .cm-editor figcaption, .cm-editor figure.fullwidth figcaption {
+  .cm-editor figcaption,
+  .cm-editor figure.fullwidth figcaption {
     margin-right: 0%;
     max-width: none;
   }
@@ -317,29 +346,18 @@
     margin-left: 1.5em;
     margin-right: 0em;
   }
-  .cm-editor blockquote p, .cm-editor blockquote footer {
+  .cm-editor blockquote p,
+  .cm-editor blockquote footer {
     width: 100%;
   }
   .cm-editor label.margin-toggle:not(.sidenote-number) {
     display: inline;
   }
-  .cm-editor .sidenote, .cm-editor .marginnote {
-    display: none;
-  }
-  .cm-editor .margin-toggle:checked + .sidenote, .cm-editor .margin-toggle:checked + .marginnote {
-    display: block;
-    float: left;
-    left: 1rem;
-    clear: both;
-    width: 95%;
-    margin: 1rem 2.5%;
-    vertical-align: baseline;
-    position: relative;
-  }
   .cm-editor label {
     cursor: pointer;
   }
-  .cm-editor div.table-wrapper, .cm-editor table {
+  .cm-editor div.table-wrapper,
+  .cm-editor table {
     width: 85%;
   }
   .cm-editor img {
